@@ -11,19 +11,20 @@ import java.io.IOException;
  * Created by chenwenning on 2016/7/27.
  */
 public class UploadUtil {
+
     //设置好账号的ACCESS_KEY和SECRET_KEY
-    private static String mAccessKey = PropertiesConfigUtils.getProperty("AccessKey");
-    private static String mSecertKey = PropertiesConfigUtils.getProperty("SecertKey");
+    private String mAccessKey;
+    private String mSecertKey;
     //要上传的空间
-    private static String mBucketName = PropertiesConfigUtils.getProperty("BucketName");
+    private String mBucketName;
     private Auth mAuth;
     private UploadManager mUploadManager;
 
 
-    public UploadUtil(String accessKey, String secertKEY, String bucketName) {
-        mAccessKey = accessKey;
-        mSecertKey = secertKEY;
-        mBucketName = bucketName;
+    public UploadUtil() {
+        mAccessKey = PropertiesConfigUtils.getProperty("AccessKey");
+        mSecertKey = PropertiesConfigUtils.getProperty("SecertKey");
+        mBucketName = PropertiesConfigUtils.getProperty("BucketName");
         //密钥配置
         mAuth = Auth.create(mAccessKey, mSecertKey);
         mUploadManager = new UploadManager();

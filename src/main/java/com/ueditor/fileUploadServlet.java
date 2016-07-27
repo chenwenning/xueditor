@@ -41,7 +41,7 @@ public class fileUploadServlet extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
-        Map<String,Object> returnMap = new HashMap<>();
+        Map<String,Object> returnMap = new HashMap<String,Object>();
         returnMap.put("url",up.getUrl());
         returnMap.put("fileType",up.getType());
         returnMap.put("state",up.getState());
