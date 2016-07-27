@@ -9,9 +9,17 @@
         <servlet-name>GetConfigServlet</servlet-name>
         <servlet-class>com.ueditor.GetConfigServlet</servlet-class>
     </servlet>
-    <!-- ... -->
     <servlet-mapping>
         <servlet-name>GetConfigServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/GetConfigServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>fileUploadServlet</servlet-name>
+        <servlet-class>com.ueditor.fileUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fileUploadServlet</servlet-name>
+        <url-pattern>/fileUploadServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

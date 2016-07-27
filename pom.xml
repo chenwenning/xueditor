@@ -252,12 +252,17 @@
             <artifactId>ueditor</artifactId>
             <version>1.1.2</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/jsp/lib/ueditor-1.1.2.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/ueditor/jsp/lib/ueditor-1.1.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20080701</version>
+        </dependency>
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.0.0</version>
         </dependency>
     </dependencies>
     <build>
