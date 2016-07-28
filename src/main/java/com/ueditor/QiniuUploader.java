@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  * Created by chenwenning on 2016/7/27.
+ * 七牛的文档  http://7xnonj.com2.z0.glb.qiniucdn.com/index.htm    http://blog.csdn.net/netdxy/article/details/50222631
  */
 public class QiniuUploader {
 
