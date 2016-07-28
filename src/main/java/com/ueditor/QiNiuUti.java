@@ -1,6 +1,7 @@
 
 package com.ueditor;
 
+import com.alibaba.fastjson.JSON;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
@@ -51,21 +52,24 @@ public class QiNiuUti {
      * @param key
      * @throws Exception
      */
-    public static void uploadFile(byte[] byteOrFile, String key) throws Exception {
+    public static Response uploadFile(byte[] byteOrFile, String key) throws Exception {
+        Response res = null;
         try {
             if (key.startsWith("/"))
                 key = key.substring(1, key.length());
             String token = getToken(key, false);
-            Response res = uploadManager.put(byteOrFile, key, token);
+            res = uploadManager.put(byteOrFile, key, token);
             if (res.isOK()) {
                 // System.out.println(res);
-
+                System.out.println(JSON.toJSONString(res));
+                return res;
             } else {
                 throw new Exception("status:" + res.statusCode + ",error:" + res.error);
             }
         } catch (QiniuException e) {
 
         }
+        return res;
     }
 
     public static void uploadFile(File byteOrFile, String key, boolean overwrite)

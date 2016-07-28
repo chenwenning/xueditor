@@ -34,7 +34,7 @@ public class QiniuUploaderUtil {
     // 文件类型
     private String type = "";
     // 原始文件名
-    private String originalName = "";
+    public String originalName = "";
     // 文件大小
     private String size = "";
 
@@ -49,7 +49,7 @@ public class QiniuUploaderUtil {
     // 文件允许格式
     private String[] allowFiles = {
             ".rar", ".doc", ".docx", ".zip", ".pdf",
-            ".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp"
+            ".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp","avi"
     };
     // 文件大小限制，单位Byte
     private long maxSize = 0;
@@ -207,16 +207,17 @@ public class QiniuUploaderUtil {
     /**
      * 上传到七牛服务器
      */
-    public void uploadToQiNiu() {
+    public Response uploadToQiNiu() {
+        Response response = null;
         boolean isMultipart = ServletFileUpload.isMultipartContent(this.request);
         if (!isMultipart) {
             this.state = this.errorInfo.get("NOFILE");
-            return;
+            return null;
         }
 
         if (this.inputStream == null) {
             this.state = this.errorInfo.get("FILE");
-            return;
+            return null;
         }
 
         // 存储title
@@ -224,7 +225,7 @@ public class QiniuUploaderUtil {
         try {
             if (!this.checkFileType(this.originalName)) {
                 this.state = this.errorInfo.get("TYPE");
-                return;
+                return null;
             }
 
             this.fileName = this.originalName;// this.getName(this.originalName);
@@ -244,7 +245,7 @@ public class QiniuUploaderUtil {
             }
             byte[] fileByte = swapStream.toByteArray();
 
-            QiNiuUti.uploadFile(fileByte, this.getUrl());
+            response = QiNiuUti.uploadFile(fileByte, this.getUrl());
             this.state = this.errorInfo.get("SUCCESS");
         } catch (QiniuException e) {
             Response r = e.response;
@@ -252,6 +253,7 @@ public class QiniuUploaderUtil {
         } catch (Exception e) {
             this.state = this.errorInfo.get("IO");
         }
+        return response;
 
     }
 
