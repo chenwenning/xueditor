@@ -1,5 +1,6 @@
 package com.ueditor;
 
+import com.qiniu.common.Config;
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import com.qiniu.storage.UploadManager;
@@ -19,9 +20,9 @@ public class QiniuUploader {
     //要上传的空间
     String bucketname = PropertiesConfigUtils.getProperty("BucketName");
     //上传到七牛后保存的文件名
-    String key = "my-java.avi";
+    String key = "my-javsa.mp3";
     //上传文件的路径
-    String FilePath = "E:\\BaiduYunDownload\\04第二讲下.avi";
+    String FilePath = "E:\\BaiduYunDownload\\心经.mp3";
 
     //密钥配置
     Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);

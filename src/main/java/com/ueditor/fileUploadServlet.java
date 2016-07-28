@@ -31,13 +31,17 @@ public class fileUploadServlet extends HttpServlet {
         if(ueditorAction.equals("")){
 
         }
-        Uploader up = new Uploader(request);
+        QiniuUploaderUtil ups = new QiniuUploaderUtil(request);
+        ups.uploadToQiNiu();
+        /*Uploader up = new Uploader(request);
         up.setSavePath("upload"); //保存路径
         String[] fileType = {".rar" , ".doc" , ".docx" , ".zip" , ".pdf" , ".txt" , ".swf", ".wmv",".xlsx",".xls"};  //允许的文件类型
         up.setAllowFiles(fileType);
         up.setMaxSize(100000000);        //允许的文件最大尺寸，单位KB
+        QiniuUploaderUtil ups = new QiniuUploaderUtil(request);
         try{
             up.upload();
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -47,6 +51,6 @@ public class fileUploadServlet extends HttpServlet {
         returnMap.put("state",up.getState());
         returnMap.put("original",up.getOriginalName());
         System.out.println(JSON.toJSONString(returnMap));
-        response.getWriter().print(JSON.toJSONString(returnMap));
+        response.getWriter().print(JSON.toJSONString(returnMap));*/
     }
 }
