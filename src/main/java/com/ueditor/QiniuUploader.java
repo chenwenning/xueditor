@@ -14,14 +14,14 @@ import java.io.IOException;
 public class QiniuUploader {
 
     //设置好账号的ACCESS_KEY和SECRET_KEY
-    String ACCESS_KEY = "Access_Key";
-    String SECRET_KEY = "Secret_Key";
+    String ACCESS_KEY = PropertiesConfigUtils.getProperty("AccessKey");
+    String SECRET_KEY = PropertiesConfigUtils.getProperty("SecertKey");
     //要上传的空间
-    String bucketname = "Bucket_Name";
+    String bucketname = PropertiesConfigUtils.getProperty("BucketName");
     //上传到七牛后保存的文件名
-    String key = "my-java.png";
+    String key = "my-java.avi";
     //上传文件的路径
-    String FilePath = "/.../...";
+    String FilePath = "E:\\BaiduYunDownload\\04第二讲下.avi";
 
     //密钥配置
     Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);

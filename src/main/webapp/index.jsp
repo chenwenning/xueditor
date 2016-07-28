@@ -24,16 +24,16 @@
     var ue = UE.getEditor('editor');
 
     /**
-     * 自定义上传地址
+     * 自定义上传图片 附件等地址
      * @param action
      * @returns {*} chenwening
      */
     UE.Editor.prototype.getActionUrl = function (action) {
-        if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage' || action == "uploadfile") {
+        if (action == 'uploadimage' || action == 'uploadscrawl' || action == 'uploadimage' || action == "uploadfile") {//上传附件   上传图片等
             return 'http://127.0.0.1/fileUploadServlet?action=' + action;
         } else if (action == 'uploadvideo') {//上传视频
             return 'http://127.0.0.1/fileUploadServlet?action=' + action;
-        } else if (action == "listimage") {//获取相册的图片 可以做根据用户id获取这个用户的图像
+        } else if (action == "listimage") {//获取相册的图片 可以做根据用户id获取这个用户上传的图像
             return "";
         } else {
             return this._bkGetActionUrl.call(this, action);
