@@ -49,7 +49,7 @@ public class QiniuUploaderUtil {
     // 文件允许格式
     private String[] allowFiles = {
             ".rar", ".doc", ".docx", ".zip", ".pdf",
-            ".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp","avi"
+            ".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp","avi",".mp4"
     };
     // 文件大小限制，单位Byte
     private long maxSize = 0;
