@@ -3,6 +3,7 @@ package com.ueditor;
 /**
  * Created by chenwenning on 2016/7/28.
  */
+
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
 import org.apache.commons.codec.binary.Base64;
@@ -19,7 +20,7 @@ import java.util.*;
 /**
  * UEditor文件上传辅助类
  */
-public class QiniuUploaderUtil {
+public class QiniuUploaderutil {
 
 /*    private static Logger LOG = Logger.getLogger(Uploader.class);*/
 
@@ -49,7 +50,7 @@ public class QiniuUploaderUtil {
     // 文件允许格式
     private String[] allowFiles = {
             ".rar", ".doc", ".docx", ".zip", ".pdf",
-            ".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp","avi",".mp4"
+            ".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp", "avi", ".mp4"
     };
     // 文件大小限制，单位Byte
     private long maxSize = 0;
@@ -62,18 +63,17 @@ public class QiniuUploaderUtil {
     public static final String ENCODEING = System.getProperties().getProperty(
             "file.encoding");
 
-    public QiniuUploaderUtil(HttpServletRequest request) {
+    public QiniuUploaderutil(HttpServletRequest request) {
         this.request = request;
         this.params = new HashMap<String, String>();
 
-        this.setMaxSize(QiniuUploaderUtil.MAX_SIZE);
+        this.setMaxSize(QiniuUploaderutil.MAX_SIZE);
 
 
         HashMap<String, String> tmp = this.errorInfo;
         tmp.put("SUCCESS", "SUCCESS"); // 默认成功
         // 未包含文件上传域
-        tmp.put("NOFILE",
-                "\\u672a\\u5305\\u542b\\u6587\\u4ef6\\u4e0a\\u4f20\\u57df");
+        tmp.put("NOFILE", "\\u672a\\u5305\\u542b\\u6587\\u4ef6\\u4e0a\\u4f20\\u57df");
         // 不允许的文件格式
         tmp.put("TYPE",
                 "\\u4e0d\\u5141\\u8bb8\\u7684\\u6587\\u4ef6\\u683c\\u5f0f");
@@ -323,7 +323,7 @@ public class QiniuUploaderUtil {
         try {
             ServletFileUpload sfu = new ServletFileUpload(dff);
             sfu.setSizeMax(this.maxSize);
-            sfu.setHeaderEncoding(QiniuUploaderUtil.ENCODEING);
+            sfu.setHeaderEncoding(QiniuUploaderutil.ENCODEING);
 
             FileItemIterator fii = sfu.getItemIterator(this.request);
 
